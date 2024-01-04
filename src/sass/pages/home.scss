@@ -1,0 +1,17 @@
+.container{ // main container with all champs
+  position: relative;
+  top: 6.5rem;
+  #all-pokemons{
+    width: 100%;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center;
+  }
+
+  .pokemon-divs{ // Global config to all champ divs
+    width: 20rem;
+    height: 26rem;
+    background-color: $box-color;
+    // border-bottom: .2rem solid $second-color;
+  }
+
+}

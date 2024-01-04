@@ -1,0 +1,52 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#app{
+  min-height: 100dvh;
+  min-height: 100vh;
+  background-color: $bg-color;
+  position: relative;
+}
+
+.hide{
+  display: none !important; 
+}
+
+.header{
+  width: 100%;
+  height: 7rem;
+  background-color: $main-red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  .navbar{ // nav bar config
+    height: 100%;
+    width: 90%;
+    
+    .search-champs{ // search input div config
+
+      .search-button{ // Search button
+        font-size: 1.2rem; // using bootstrap icons, and because of it i manipulate the magnifying glass icon like a text 
+      }
+
+      .search-champs-input{ // Input area config
+        width: 24.125rem;
+        height: 2.5rem;
+        border-radius: 1.25rem;
+        background-color: $bg-color;
+        border: none;
+      }
+    }
+    
+  }
+
+  .logo{ // site logo
+    width: 9rem;
+    height: 4rem;
+  }
+}
