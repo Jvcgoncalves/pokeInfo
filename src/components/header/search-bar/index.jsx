@@ -5,8 +5,8 @@ export default function SearchBar({value,setValue}){
   }
 
   return (
-    <form onSubmit={formSubmit} className="search-champs d-flex gap-3 pe-4 align-items-center desktop">
-      <input id="champs-input" autoComplete="off" className="search-champs-input form-control" type="text" placeholder="Procure um campeão..."/>
+    <form onSubmit={formSubmit} className="search-champs d-flex gap-3 align-items-center desktop">
+      <input id="champs-input" autoComplete="off" className="search-champs-input form-control" type="text" placeholder="Procure um pokemon..."/>
       <button id="search-button" className="search-button btn btn-outline-light" type="submit" >
         <i className="bi bi-search"></i>
       </button>   

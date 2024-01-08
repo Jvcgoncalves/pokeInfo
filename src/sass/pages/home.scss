@@ -1,17 +1,65 @@
-.container{ // main container with all pokemons
-  margin-top: 6.5rem;
-  
+.container-xxl{ // main container with all pokemons
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas: 
+  "side_bar main_content";
+
   #all-pokemons{
+    margin-top: 0;
+    grid-area: main_content;
+    grid-template-areas: 
+    "text text text"
+    "cards cards cards"
+    ;
+    #error-message{
+      @include font-styles($normal-text-font,3rem,$dark-font);
+    }
+
+    #headline-text{
+      grid-area: text;
+      @include font-styles($title-font,3rem,$dark-font);
+      font-weight: 700;
+    }
+    
+  }
+
+  .pokemons-cards{
+    grid-area: cards;
     width: 100%;
     grid-template-columns: repeat(3,1fr);
-    justify-items: center;
+    .pokemon-divs{ // Global config to all pokemon divs
+        width: 18rem;
+        height: 23rem;
+        background-color: $box-color;
+        // border-bottom: .2rem solid $second-color;
+        justify-self: flex-end;
+      }
   }
 
-  .pokemon-divs{ // Global config to all pokemon divs
-    width: 20rem;
-    height: 26rem;
-    background-color: $box-color;
-    // border-bottom: .2rem solid $second-color;
+  
+
+  .loader{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+
+    .spinner-border{
+      width: 5rem;
+      height: 5rem;
+      color: $main-red !important;
+    }
   }
 
+  .side-nav-bar{
+    grid-area: side_bar;
+    padding: .3rem 1rem .5rem 1rem;
+    position: sticky;
+    width: 100%;
+    top: 6rem;
+    left: 0;
+    overflow: auto;
+    height: calc(100vh - 6.2rem);
+  }  
 }
+

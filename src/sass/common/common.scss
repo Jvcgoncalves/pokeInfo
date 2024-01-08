@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-#app{
+body{
   min-height: 100dvh;
   min-height: 100vh;
   background-color: $bg-color;
@@ -16,17 +16,16 @@
 
 .header{
   width: 100%;
-  height: 7rem;
+  height: 6rem;
   background-color: $main-red;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
 
   .navbar{ // nav bar config
     height: 100%;
-    width: 90%;
-    
+    width: 100%;
     .search-champs{ // search input div config
 
       .search-button{ // Search button
