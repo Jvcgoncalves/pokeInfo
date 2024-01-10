@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Li from "./li-types";
-import SetPokemonTypes from "../../../hooks/SetTypes";
+import SetPokemonTypes from "../../../hooks/useSetTypes";
 
 export default function SideBarMenu(){
   const {types,setTypesToShow} = SetPokemonTypes()

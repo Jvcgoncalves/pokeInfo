@@ -1,47 +1,17 @@
-import { useState } from 'react'
 import './sass/style.scss'
 import Header from './components/header'
 import CardPokemon from './components/body/card-part'
 import SideBarMenu from './components/body/side-menu'
-
-let loadingPokemons = false
-let renderApiError = false
-
-async function getPokemons(){
-  try {
-    loadingPokemons = true
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0").then((res) => {
-    return res.json()
-  })
-  return response.results
-  } catch (error) {
-    document.body.style.overflow = "hidden"
-    renderApiError = true
-    return ['Error']
-  } 
-} 
+import useSetPoekemons from './hooks/useSetPokemons'
 
 export default  function App() {
-  const [pokemons, setPokemons] = useState([])
-  const [pokemonsToShow, setPokemonsToShow] = useState([])
-
-  async function getPokemonDetails(allPokemons){
-    await Promise.all(allPokemons.map(currentPokemon=> fetch(currentPokemon) ))
-    .then(response => Promise.all( response.map( async res => res.json() )))
-    .then(res => {
-      setPokemonsToShow(res)
-    })
-    loadingPokemons = false
-  }
+  const {loadPokemons,loadingPokemons,pokemons,pokemonsToShow,renderApiError} = useSetPoekemons()
 
   if(pokemons.length === 0 ){
     try {
-      getPokemons().then(res=>{
-        setPokemons(res)
-        getPokemonDetails(res.map(pokemons =>pokemons.url))
-      })
+      loadPokemons()
     } catch (error) {
-      renderApiError = true
+      return
     }    
   }
 
