@@ -4,11 +4,31 @@ import SetPokemonTypes from "../../../hooks/SetTypes";
 
 export default function SideBarMenu(){
   const {types,setTypesToShow} = SetPokemonTypes()
-  setTypesToShow()
+  if(types.length === 0) {
+    setTypesToShow()
+  }
   return (
     <nav className="side-nav-bar d-flex">
       <ul className="navbar-nav gap-3">
-        <Li>normal</Li>
+        {
+          types.length > 0 ? 
+          (
+            types.map(currentType => {
+              return (
+                <Li
+                key={currentType}
+                >
+                  {currentType}
+                </Li>
+              )
+            })
+          ) : 
+          (
+            <p>
+              Tipos não encontrados
+            </p>
+          )
+        }
       </ul>
     </nav> 
   )
