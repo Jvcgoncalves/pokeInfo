@@ -18,8 +18,7 @@ async function getPokemons(){
     document.body.style.overflow = "hidden"
     renderApiError = true
     return ['Error']
-  }
-  
+  } 
 } 
 
 export default  function App() {
@@ -37,16 +36,12 @@ export default  function App() {
 
   if(pokemons.length === 0 ){
     try {
-
       getPokemons().then(res=>{
         setPokemons(res)
         getPokemonDetails(res.map(pokemons =>pokemons.url))
       })
-
     } catch (error) {
-
       renderApiError = true
-
     }    
   }
 
@@ -54,7 +49,7 @@ export default  function App() {
     <>
       <div id="app">
         <Header />
-        <div className="container-xxl d-grid px-5">
+        <div className="container-xxl d-grid px-5 mt-3">
           <div id="all-pokemons" >
             <h2 className="text-center mb-4" id="headline-text">PokeInfo</h2>
             <div

@@ -3,3 +3,10 @@
   font-size: $font-size;
   color: $font-color;
 }
+
+@mixin font-gradient($angle , $color-one, $percent-color-one, $color-two, $percent-color-two){
+  background: linear-gradient(180deg,$color-one $percent-color-one, $color-two $percent-color-two);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} 
