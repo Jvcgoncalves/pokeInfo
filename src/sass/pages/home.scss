@@ -6,36 +6,39 @@
   #all-pokemons{
     margin-top: 0;
     grid-area: main_content;
-    grid-template-areas: 
-    "text text text"
-    "cards cards cards"
-    ;
     #error-message{
-      @include font-styles($normal-text-font,3rem,$dark-font);
+      @include font-styles($normal-text-font,2rem,$dark-font);
     }
 
     #headline-text{
-      grid-area: text;
-      @include font-styles($title-font,3rem,$dark-font);
+      @include font-styles($title-font,3.3rem,$dark-font);
       font-weight: 700;
     }
     
   }
 
   .pokemons-cards{
-    grid-area: cards;
     width: 100%;
     grid-template-columns: repeat(3,1fr);
     .pokemon-divs{ // Global config to all pokemon divs
-        width: 18rem;
-        height: 23rem;
-        background-color: $box-color;
-        // border-bottom: .2rem solid $second-color;
-        justify-self: flex-end;
+      width: 18rem;
+      height: 23rem;
+      justify-self: flex-end;
+      .pokemon-image{
+        width: 8rem;
+        height: 8rem;
       }
+      .pokemon-info{
+        
+        .pokemon-types-div{
+          .pokemon-types{
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+        }
+      }
+    }
   }
-
-  
 
   .loader{
     display: flex;
@@ -53,13 +56,45 @@
 
   .side-nav-bar{
     grid-area: side_bar;
-    padding: .1rem 1rem .5rem 1rem;
-    position: sticky;
-    width: 100%;
+    position: fixed;
+    width: 19rem;
     top: 6rem;
     left: 0;
     overflow: auto;
-    height: calc(100vh - 7.5rem);
+    height: calc(100vh - 6rem);
+    color: $dark-font;
+    .navbar-nav{
+      height: 100%;
+        .nav-item{
+          padding: .5rem .8rem;
+          padding-left: 4.5rem;
+          position: relative;
+          height: 5rem;
+          cursor: pointer;
+          border-bottom: .05rem solid $dark-font;
+          background-color: $box-color;
+          @include font-styles($normal-text-font,1.1rem,$dark-font);
+
+          .type-color{
+            display: flex;
+            content: "";
+            width: 5rem;
+            height: 1rem;
+          }
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: .5rem; 
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: $main-red; 
+      border-radius: .5rem; 
+    }
+  
+    &::-webkit-scrollbar-track {
+      background-color: $box-color; 
+    }
   }  
 }
-

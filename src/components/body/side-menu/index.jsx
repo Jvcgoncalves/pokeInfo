@@ -1,24 +1,37 @@
-import { useState } from "react";
 import Li from "./li-types";
-import SetPokemonTypes from "../../../hooks/useSetTypes";
+import PropTypes from "prop-types"
 
-export default function SideBarMenu(){
-  const {types,setTypesToShow} = SetPokemonTypes()
-  if(types.length === 0) {
-    setTypesToShow()
-  }
+SideBarMenu.propTypes = {
+  allPokemons: PropTypes.array,
+  types: PropTypes.array,
+  filterFunction: PropTypes.func,
+}
+
+export default function SideBarMenu({types,filterFunction,allPokemons}){
+  
   return (
-    <nav className="side-nav-bar d-flex">
-      <ul className="navbar-nav gap-3">
+    <nav className="side-nav-bar d-flex m-0">
+      <ul className="navbar-nav w-100">
+        <Li
+        key="get-all-pokemons"
+        colorClass={null}
+        filterFunction={filterFunction}
+        allPokemons={allPokemons}
+        >
+          Ver todos
+        </Li>
         {
           types.length > 0 ? 
           (
             types.map(currentType => {
               return (
                 <Li
-                key={currentType}
+                key={currentType.typeName}
+                colorClass={currentType.colorClass}
+                filterFunction={filterFunction}
+                allPokemons={allPokemons}
                 >
-                  {currentType}
+                  {currentType.typeName}
                 </Li>
               )
             })

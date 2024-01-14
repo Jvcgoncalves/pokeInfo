@@ -15,61 +15,58 @@ function translateTypesToPortuguese(types){
   const typesInPortuguese = types.map(currentType =>{
     switch(currentType.name){
       case "normal":
-        currentType = "Normal"
+        currentType = {typeName:"Normal",colorClass:"normal", colorCode:"#a6a69f", typeImage:"./images/normal.svg"}
       break;
       case "flying":
-        currentType = "Voador"
+        currentType = {typeName:"Voador",colorClass:"flying", colorCode:"#9db7e8", typeImage:"./images/flying.svg"}
       break;
       case "fighting":
-        currentType = "Lutador"
+        currentType = {typeName:"Lutador",colorClass:"fighting", colorCode:"#e04452", typeImage:"./images/fighting.svg"}
       break;
       case "poison":
-        currentType = "Venenoso"
+        currentType = {typeName:"Venenoso",colorClass:"poison", colorCode:"#c15fd2", typeImage:"./images/poison.svg"}
       break;
       case "ground":
-        currentType = "Terrestre"
+        currentType = {typeName:"Terrestre",colorClass:"ground", colorCode:"#d87948", typeImage:"./images/ground.svg"}
       break;
       case "rock":
-        currentType = "Pedra"
+        currentType = {typeName:"Pedra",colorClass:"rock", colorCode:"#d3c891", typeImage:"./images/rock.svg"}
       break;
       case "bug":
-        currentType = "Inseto"
+        currentType = {typeName:"Inseto",colorClass:"bug", colorCode:"#99c32f", typeImage:"./images/bug.svg"}
       break;
       case "steel":
-        currentType = "Aço"
+        currentType = {typeName:"Aço",colorClass:"steel", colorCode:"#56a7a9", typeImage:"./images/steel.svg"}
       break;
       case "fire":
-        currentType = "Fogo"
+        currentType = {typeName:"Fogo",colorClass:"fire", colorCode:"#ffa84e", typeImage:"./images/fire.svg"}
       break;
       case "water":
-        currentType = "Água"
+        currentType = {typeName:"Água",colorClass:"water", colorCode:"#4e92d6", typeImage:"./images/water.svg"}
       break;
       case "grass":
-        currentType = "Planta"
+        currentType = {typeName:"Planta",colorClass:"grass", colorCode:"#5ebc61", typeImage:"./images/grass.svg"}
       break;
       case "electric":
-        currentType = "Elétrico"
+        currentType = {typeName:"Elétrico",colorClass:"electric", colorCode:"#f6d74f", typeImage:"./images/electric.svg"}
       break;
       case "psychic":
-        currentType = "Psíquico"
+        currentType = {typeName:"Psíquico",colorClass:"psychic", colorCode:"#f86c72", typeImage:"./images/psychic.svg"}
       break;
       case "ice":
-        currentType = "Gelo"
+        currentType = {typeName:"Gelo",colorClass:"ice", colorCode:"#8ad9d2", typeImage:"./images/ice.svg"} 
       break;
       case "dragon":
-        currentType = "Dragão"
-      break;
-      case "normal":
-        currentType = "normal"
+        currentType = {typeName:"Dragão",colorClass:"dragon", colorCode:"#0870bf", typeImage:"./images/dragon.svg"} 
       break;
       case "dark":
-        currentType = "Sombrio"
+        currentType = {typeName:"Sombrio",colorClass:"dark", colorCode:"#5b5668", typeImage:"./images/dark.svg"} 
       break;
       case "fairy":
-        currentType = "Fada"
+        currentType = {typeName:"Fada",colorClass:"fairy", colorCode:"#ed92e4", typeImage:"./images/fairy.svg"} 
       break;
       case "ghost":
-        currentType = "Fantasma"
+        currentType = {typeName:"Fantasma",colorClass:"ghost", colorCode:"#626dbe", typeImage:"./images/ghost.svg"} 
       break;
       default:
         currentType = null
@@ -83,6 +80,7 @@ export default function SetPokemonTypes(){
   const [types, setTypes] = useState([])
 
   async function setTypesToShow(){
+    if(types.length > 0 ) return
     const allTypes = await getTypesFromAPI()
     setTypes(translateTypesToPortuguese(allTypes))
   }
