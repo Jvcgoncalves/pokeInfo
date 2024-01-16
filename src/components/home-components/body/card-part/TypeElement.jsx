@@ -1,7 +1,7 @@
-export default function TypeElement({imgSrc,champName,typeName}){
+export default function TypeElement({imgSrc,pokeName,typeName}){
   return <img 
   src={imgSrc} 
-  alt={champName} 
+  alt={pokeName} 
   className="pokemon-types"
   data-bs-toggle="tooltip" 
   data-bs-title={typeName}

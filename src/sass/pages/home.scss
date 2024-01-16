@@ -7,7 +7,7 @@
     margin-top: 0;
     grid-area: main_content;
     #error-message{
-      @include font-styles($normal-text-font,2rem,$dark-font);
+      @include font-styles($commom-font,2rem,$dark-font);
     }
 
     #headline-text{
@@ -21,6 +21,7 @@
     width: 100%;
     grid-template-columns: repeat(3,1fr);
     .pokemon-divs{ // Global config to all pokemon divs
+      position: relative;
       width: 18rem;
       height: 23rem;
       justify-self: flex-end;
@@ -29,13 +30,27 @@
         height: 8rem;
       }
       .pokemon-info{
-        
+        @include font-styles($subtitle-font,1.4rem,$dark-font);
+        .pokemon-number{
+          position: absolute;
+          top: .2rem;
+          left: .5rem;
+          @include font-styles($subtitle-font,1.2rem,$dark-font);
+          font-weight: 500;
+          padding: .1rem;
+        }
         .pokemon-types-div{
           .pokemon-types{
             width: 2.5rem;
             height: 2.5rem;
           }
         }
+      }
+      .see-more-button{
+        background-color: $main-red;
+        border: .1rem solid $main-red;
+        @include font-styles($commom-font,1.2rem,$dark-font);
+
       }
     }
   }
@@ -73,8 +88,13 @@
           cursor: pointer;
           border-bottom: .05rem solid $dark-font;
           background-color: $box-color;
-          @include font-styles($normal-text-font,1.1rem,$dark-font);
-
+          @include font-styles($commom-font,1.1rem,$dark-font);
+          &.active{
+            background-color: #b2ff91;
+          }
+          &:hover{
+            background-color: #919191;
+          }
           .type-color{
             display: flex;
             content: "";

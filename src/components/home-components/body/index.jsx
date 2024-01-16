@@ -14,6 +14,7 @@ MainContent.propTypes = {
 }
 
 export default function MainContent({allPokemons,renderApiError,types,setTypesToShow,pokemonsToShow,filterPokemonsToShow}){
+  
   useEffect(() => {
     if (allPokemons.length > 0) {
       filterPokemonsToShow(allPokemons);
@@ -26,7 +27,6 @@ export default function MainContent({allPokemons,renderApiError,types,setTypesTo
   useEffect(()=>{
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-    console.log("adicionando tooltip")
   },[pokemonsToShow])
 
   return (
@@ -35,11 +35,11 @@ export default function MainContent({allPokemons,renderApiError,types,setTypesTo
         <h2 className="text-center mb-4 mt-2" id="headline-text">PokeInfo</h2>
         <div
           className={
-            `${ pokemonsToShow.length <= 0 ? "d-flex flex-column text-center" : "d-grid flex-wrap justify-content-start gap-3"} container pokemons-cards pe-3`
+            `${ pokemonsToShow.length <= 1 ? "d-flex flex-column text-center" : "d-grid flex-wrap justify-content-start gap-3"} container pokemons-cards pe-3`
           }
         >
           {
-            pokemonsToShow.length > 0 ? (
+            pokemonsToShow.length >= 1 && pokemonsToShow[0] !== "No pokemon found" ? (
               pokemonsToShow.map( pokemon =>{
                 return(
                   <CardPokemon 
@@ -62,7 +62,13 @@ export default function MainContent({allPokemons,renderApiError,types,setTypesTo
                 </span>
               ) 
               :
-              ( 
+              pokemonsToShow[0] === "No pokemon found" ? 
+              (
+                <span id="error-message">
+                  Nenhum pokemon encontrado
+                </span>
+              ) :
+              (
                 <div className="loader">
                   <div className="spinner-border text-danger" role="status">
                     <span className="visually-hidden">Loading...</span>

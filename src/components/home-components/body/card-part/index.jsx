@@ -1,6 +1,7 @@
 import PropTypes from "prop-types"
 import { useEffect, useRef } from "react";
 import TypeElement from "./TypeElement";
+import ButtonPart from "./ButtonPart";
 
 CardPokemon.propTypes ={
   pokemon: PropTypes.object,
@@ -15,7 +16,24 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function getPokemonTypes(pokemonTypesToFilter){
+  return pokemonTypesToFilter.map(poke => poke.type.name) // function to filter API data
+}
+
+function formatPokemonNumber(number){
+  switch(number.toString().length){
+    case 1:
+      return `#00${number}`
+    case 2:
+      return `#0${number}`
+    case 3:
+      return `#${number}`
+  }
+}
+
 export default function CardPokemon({pokemon,allPokemonTypes,pokemonImage,name,types}){
+  
+  const pokemonNumber = useRef(formatPokemonNumber(pokemon.id))
   const pokemonTypes = useRef(getPokemonTypes(allPokemonTypes).map( // set data about pokemon type
     currentType => types.find(type => type.colorClass === currentType)
     ))
@@ -28,9 +46,6 @@ export default function CardPokemon({pokemon,allPokemonTypes,pokemonImage,name,t
     
   }, []);
 
-  function getPokemonTypes(pokemonTypesToFilter){
-    return pokemonTypesToFilter.map(poke => poke.type.name) // function to filter API data
-  }
   return (
     <div 
     id={name}
@@ -38,11 +53,11 @@ export default function CardPokemon({pokemon,allPokemonTypes,pokemonImage,name,t
     data-type-1={pokemonTypes.current[0].colorClass}
     {...(pokemonTypes.current.length > 1 ? { "data-type-2": pokemonTypes.current[1].colorClass } : {})}
     
-    className="pokemon-divs px-3 py-1 rounded"
+    className="pokemon-divs p-3 rounded d-flex flex-column gap-3"
     >
       <img className="pokemon-image mx-auto d-block" src={pokemonImage} alt={`${name}-image`} />
       <div className="pokemon-info d-flex flex-column w-100 gap-2">
-        <h3 className="pokemon-name">{capitalize(name)}</h3>
+        <h3 className="pokemon-name d-flex justify-content-between">{capitalize(name)}<span className="pokemon-number">{pokemonNumber.current}</span></h3>
         <div className="pokemon-types-div d-flex gap-3 justify-content-center">
           {
             pokemonTypes.current.map( type=>{
@@ -51,13 +66,17 @@ export default function CardPokemon({pokemon,allPokemonTypes,pokemonImage,name,t
               key={type.typeImage}
               typeName={type.typeName}
               imgSrc={type.typeImage}
-              champName={name}
+              pokeName={name}
               />
               )}
             )
           }
         </div>
       </div>
+      <ButtonPart 
+      pokemonName={name}
+      pokemon={pokemon}
+      />
     </div>
   )
 }

@@ -6,7 +6,7 @@ async function getPokemons(){
   try {
     const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0").then((res) => {
     return res.json()
-  }).catch(e=> console.log)
+  }).catch(e=> console.log(e))
   return response.results
   } catch (error) {
     document.body.style.overflow = "hidden"
