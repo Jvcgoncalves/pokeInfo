@@ -49,7 +49,7 @@ export default function MainContent({allPokemons,renderApiError,types,setTypesTo
                   id={pokemon.name}
                   key={pokemon.name}
                   name={pokemon.name}
-                  pokemonImage={pokemon.sprites.front_default}
+                  pokemonImage={pokemon.sprites.front_default                  }
                   />
                 )
               })

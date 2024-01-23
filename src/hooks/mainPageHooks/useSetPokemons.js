@@ -18,8 +18,9 @@ async function getPokemons(){
 export default function useSetPoekemons(){
   const [pokemons, setPokemons] = useState([])
 
+
   async function getPokemonDetails(allPokemons){
-    await Promise.all(allPokemons.map(currentPokemon=> fetch(currentPokemon) ))
+    await Promise.all(allPokemons.map(currentPokemonURL => fetch(currentPokemonURL) ))
     .then(response => Promise.all( response.map( async res => res.json() )))
     .then(res => {
       setPokemons(res)

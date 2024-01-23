@@ -1,8 +1,8 @@
 import Header from '../components/home-components/header'
 import MainContent from '../components/home-components/body'
-import SetPokemonTypes from "../hooks/useSetTypes"
-import useSetPokemons from '../hooks/useSetPokemons'
-import useSetPokemonsToShow from '../hooks/useSetPokemonsToShow'
+import SetPokemonTypes from "../hooks/mainPageHooks/useSetTypes"
+import useSetPokemons from '../hooks/mainPageHooks/useSetPokemons'
+import useSetPokemonsToShow from '../hooks/mainPageHooks/useSetPokemonsToShow'
 import { useEffect, useState } from 'react'
 import PokemonSearchFunction from '../contexts/PokemonsSearchFunction'
 import HomeNavbar from '../components/home-components/header/home-navbar'

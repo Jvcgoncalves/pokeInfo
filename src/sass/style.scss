@@ -7,7 +7,12 @@
 // Pages
 
 @import "./pages/home.scss";
+@import "./pages/pokemonInfo.scss";
 
-// common
+// Common
 
 @import "./common/common.scss";
+
+// Animations
+
+@import "./variables/animations/animations.scss";

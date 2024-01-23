@@ -11,14 +11,14 @@ CardPokemon.propTypes ={
   allPokemonTypes: PropTypes.array,
 }
 
-function capitalize(str) {
+export function capitalize(str) {
   str === "nidoran-m" || str === "nidoran-f" ? str = str.slice(0,-2) : null 
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function getPokemonTypes(pokemonTypesToFilter){
+export function getPokemonTypes(pokemonTypesToFilter){
   return pokemonTypesToFilter.map(poke => poke.type.name) // function to filter API data
-}
+} // export to use at pokemons curiosities page
 
 function formatPokemonNumber(number){
   switch(number.toString().length){
@@ -76,6 +76,7 @@ export default function CardPokemon({pokemon,allPokemonTypes,pokemonImage,name,t
       <ButtonPart 
       pokemonName={name}
       pokemon={pokemon}
+      types={types}
       />
     </div>
   )
