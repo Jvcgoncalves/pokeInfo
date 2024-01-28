@@ -1,14 +1,17 @@
+import { useContext } from "react";
+import AllPokemonArray from "../../../../contexts/allPokemonsArray";
 import Li from "./li-types";
 import PropTypes from "prop-types"
 
 SideBarMenu.propTypes = {
-  allPokemons: PropTypes.array,
   types: PropTypes.array,
   filterFunction: PropTypes.func,
 }
 
-export default function SideBarMenu({types,filterFunction,allPokemons}){
+export default function SideBarMenu({types,filterFunction}){
   
+  const allPokemons = useContext(AllPokemonArray)
+
   return (
     <nav className="side-nav-bar d-flex m-0">
       <ul className="navbar-nav w-100">

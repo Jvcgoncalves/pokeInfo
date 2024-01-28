@@ -6,9 +6,6 @@
   #all-pokemons{
     margin-top: 0;
     grid-area: main_content;
-    #error-message{
-      @include font-styles($commom-font,2rem,$dark-font);
-    }
 
     #headline-text{
       @include font-styles($title-font,3.3rem,$dark-font);
@@ -19,15 +16,16 @@
 
   .pokemons-cards{
     width: 100%;
+    max-width: 900px;
     grid-template-columns: repeat(3,1fr);
     .pokemon-divs{ // Global config to all pokemon divs
       position: relative;
-      width: 18rem;
-      height: 23rem;
+      width: 16rem;
+      height: 21rem;
       justify-self: flex-end;
       .pokemon-image{
-        width: 8rem;
-        height: 8rem;
+        width: 7rem;
+        height: 7rem;
       }
       .pokemon-info{
         @include font-styles($subtitle-font,1.4rem,$dark-font);
@@ -41,16 +39,20 @@
         }
         .pokemon-types-div{
           .pokemon-types{
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 2rem;
+            height: 2rem;
           }
         }
       }
       .see-more-button{
-        background-color: $main-red;
-        border: .1rem solid $main-red;
-        @include font-styles($commom-font,1.2rem,$dark-font);
-
+        border: .1rem solid $light-font;
+        background-color: $light-font;
+        @include font-styles($commom-font,1.1rem,$dark-font);
+        transition: .3s ease-in-out;
+        &:hover{
+          background-color: $bg-color;
+          transform: scale(1.05);
+        }
       }
     }
   }
@@ -72,7 +74,7 @@
   .side-nav-bar{
     grid-area: side_bar;
     position: fixed;
-    width: 19rem;
+    width: 18.5rem;
     top: 6rem;
     left: 0;
     overflow: auto;

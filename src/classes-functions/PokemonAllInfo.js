@@ -1,13 +1,15 @@
 import { capitalize, getPokemonTypes } from "../components/home-components/body/card-part";
+import { translateTypesToPortuguese } from "../hooks/mainPageHooks/useSetTypes";
 
 export default class PokemonInfo {
-  constructor(pokemonData){
+  constructor(pokemonData,damageRelation,evolutions){
     this.name = capitalize(pokemonData.name)
-    this.types = getPokemonTypes(pokemonData.types)
+    this.types = translateTypesToPortuguese(this.transformTypesForFunction(pokemonData.types))
     this.mainImage = pokemonData.sprites.front_default
     this.shinyImage = pokemonData.sprites.front_shiny
     this.pokemonStatus = this.getStatus(pokemonData.stats)
-
+    this.typeDamageRelation = damageRelation
+    this.evolutions = evolutions
   }
 
   getStatus(pokemonDataStatsArray){
@@ -35,5 +37,9 @@ export default class PokemonInfo {
       case "speed":
         return "Velocidade"
     }
+  }
+
+  transformTypesForFunction(types){
+    return types.map(type => type.type)
   }
 }

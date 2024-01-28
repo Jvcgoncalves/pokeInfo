@@ -7,11 +7,10 @@ export default function Table(){
   const pokemonData = useContext(PokemonInfoContext)
 
   return (
-    <table className="table mt-3">
+    <table className="table">
       <tbody>
         {
           pokemonData.pokemonStatus.map(stats =>{
-            console.log(stats)
             return (
               <TableRow 
               td={stats.statValue}

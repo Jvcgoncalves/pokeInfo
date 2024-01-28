@@ -6,6 +6,7 @@ import useSetPokemonsToShow from '../hooks/mainPageHooks/useSetPokemonsToShow'
 import { useEffect, useState } from 'react'
 import PokemonSearchFunction from '../contexts/PokemonsSearchFunction'
 import HomeNavbar from '../components/home-components/header/home-navbar'
+import AllPokemonArray from '../contexts/allPokemonsArray'
 
 export default  function Home() {
   const {loadPokemons,pokemons,renderApiError} = useSetPokemons() // get all pokemons from api
@@ -32,17 +33,17 @@ export default  function Home() {
       }
       return ()=> {return}
   },[])
+  
   return (
+    <AllPokemonArray.Provider value={pokemons}>
     <PokemonSearchFunction.Provider value={{pokemonSearchInputValue,setPokemonSearchInputValue}}>
       <div id="app">
         <Header>
           <HomeNavbar
-            allPokemons={pokemons}
             filterPokemonsToShowByTyping={filterPokemonsToShowByTyping}
           />
         </Header>
         <MainContent 
-        allPokemons={pokemons}
         filterPokemonsToShow={filterPokemonsToShow}
         pokemonsToShow={pokemonsToShow}
         renderApiError={renderApiError}
@@ -51,5 +52,6 @@ export default  function Home() {
         />       
       </div>
     </PokemonSearchFunction.Provider>
+    </AllPokemonArray.Provider>
   )
 }

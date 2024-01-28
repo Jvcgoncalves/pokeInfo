@@ -1,7 +1,10 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import CardPokemon from "./card-part"
 import SideBarMenu from "./side-menu"
 import PropTypes from "prop-types"
+import Loader from "../../commom/Loader"
+import AllPokemonArray from "../../../contexts/allPokemonsArray"
+import ErrorMessage from "../../commom/ErrorMessage"
 
 MainContent.propTypes = {
   allPokemons: PropTypes.array, 
@@ -13,8 +16,9 @@ MainContent.propTypes = {
 
 }
 
-export default function MainContent({allPokemons,renderApiError,types,setTypesToShow,pokemonsToShow,filterPokemonsToShow}){
-  
+export default function MainContent({renderApiError,types,setTypesToShow,pokemonsToShow,filterPokemonsToShow}){
+  const allPokemons = useContext(AllPokemonArray)
+
   useEffect(() => {
     if (allPokemons.length > 0) {
       filterPokemonsToShow(allPokemons);
@@ -35,7 +39,7 @@ export default function MainContent({allPokemons,renderApiError,types,setTypesTo
         <h2 className="text-center mb-4 mt-2" id="headline-text">PokeInfo</h2>
         <div
           className={
-            `${ pokemonsToShow.length <= 1 ? "d-flex flex-column text-center" : "d-grid flex-wrap justify-content-start gap-3"} container pokemons-cards pe-3`
+            `${ pokemonsToShow.length <= 1 ? "d-flex flex-column text-center" : "d-grid flex-wrap justify-content-start gap-3 me-1"} container pokemons-cards pe-3`
           }
         >
           {
@@ -56,31 +60,24 @@ export default function MainContent({allPokemons,renderApiError,types,setTypesTo
             ) 
             : 
             (
-              renderApiError ? (
-                <span id="error-message">
-                  Não foi possível carregar o conteúdo :(
-                </span>
+              renderApiError ? ( // Check API response
+                <ErrorMessage />
               ) 
               :
-              pokemonsToShow[0] === "No pokemon found" ? 
+              pokemonsToShow[0] === "No pokemon found" ? // If the API response is different from the error, the page checks if there is any pokemon (used for pokemon search engine)
               (
                 <span id="error-message">
                   Nenhum pokemon encontrado
                 </span>
               ) :
               (
-                <div className="loader">
-                  <div className="spinner-border text-danger" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                </div>
+                <Loader /> // Loader case do not catch in any previous if (show to used that content are beign loaded)
               )
             )
           }
         </div>
       </div>
       <SideBarMenu
-      allPokemons={allPokemons}
       filterFunction={filterPokemonsToShow}
       setTypesToShow={setTypesToShow} 
       types={types}

@@ -1,14 +1,19 @@
 .container-xxl.info-page{
-
+  .h1{
+    @include font-styles($title-font,3rem,$dark-font);
+    font-weight: 100
+  }
+  .h2{
+    @include font-styles($subtitle-font,2rem,$dark-font);
+  }
+  .h3{
+    @include font-styles($commom-font,1.35rem,$dark-font);
+  }
   .container.pokemon-data{
-
     box-shadow: 0 0 1rem .1rem $dark-font;
     max-width: 97%;
     .pokemon-name-image{
       position: relative;
-      #pokemonName{
-        @include font-styles($title-font,3rem,$dark-font);
-      }
       
       .pokemon-image-div{
         position: relative;
@@ -30,23 +35,65 @@
         }
       }
 
-      &::after{
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: .1rem;
-        background-color: $dark-font;
+      .change-pokemon-image{
+        border: .1rem solid $main-red;
+        background-color: transparent;
+        @include font-styles($commom-font,1.2rem,$dark-font);
+        transition: .3s ease-in-out;
+        &:hover{
+          background-color: $main-red;
+          color: $light-font;
+          transform: scale(1.1);
+        }
       }
     }
 
-    .table{
-      .stats-bar{
-        height: 1.75rem;
-        color: $box-color;
+    .pokemon-stats {
+      position: relative;
+      .table{
+        .stat-row{
+          th{
+            @include font-styles($subtitle-font,1.1rem,$dark-font);
+          }
+          td{
+            @include font-styles($subtitle-font,1.1rem,$dark-font);
+          }
+          font-weight: 100;
+        }
+        .stats-bar{
+          height: 1.75rem;
+          color: $box-color;
+        }
+      }
+    }
+    .damage-relations{
+      .pokemon-types-block{
+        @include font-styles($commom-font,1.1rem,$dark-font);
+        .pokemon-types{
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+      .types-table{
+        .table-damage-relation-block{
+          .damage-relation-type{
+            height: 60%;
+            width: 100%;
+          }
+          .text-part{
+            height: 40%;
+          }
+          width: 6rem;
+          height: 6rem;
+          @include font-styles($subtitle-font,1rem,$dark-font);
+  
+          .types-image{
+            width: 2rem;
+            height: 2rem;
+          }
+        }
       }
     }
   }
-  
+
 }
