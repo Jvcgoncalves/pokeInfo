@@ -1,10 +1,7 @@
-import SearchBar from "./search-bar";
-import { Link } from "react-router-dom";
-
-export default function Header({children}){
+export default function Header({children,page = null}){
 
   return(
-    <header className="header d-flex justify-content-center container-xxl px-5">
+    <header id="header" className={`header d-flex justify-content-center container-fluid px-5 ${page === null ? "" : page}`}>
       {
         children
       }

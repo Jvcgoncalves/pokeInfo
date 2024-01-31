@@ -13,6 +13,11 @@ const router = createBrowserRouter([
   {
     path: "pokemon-info/:pokemonName",
     element: <PokemonCuriosities />,
+    loader: ({params}) => {
+      if(params !== null && params !== undefined)
+      return "ok"
+    }
+    ,
     errorElement: 
     <div id="app">
       <Header>

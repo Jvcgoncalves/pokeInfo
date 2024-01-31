@@ -14,6 +14,10 @@ body{
   display: none !important; 
 }
 
+.button-open-filter{
+  display: none !important;
+}
+
 .header{
   width: 100%;
   height: 6rem;
@@ -26,21 +30,21 @@ body{
   .navbar{ // nav bar config
     height: 100%;
     width: 100%;
-    .search-champs{ // search input div config
+    .search-pokemons{ // search input div config
 
       .search-button{ // Search button
         font-size: 1.2rem; // using bootstrap icons, and because of it i manipulate the magnifying glass icon like a text 
       }
 
-      .search-champs-input{ // Input area config
+      .search-pokemons-input{ // Input area config
         width: 24.125rem;
         height: 2.5rem;
         border-radius: 1.25rem;
         background-color: $bg-color;
         border: none;
       }
-    }
-  }
+    } // .search-pokemons end
+  } // .navbar end
 
   .logo{ // site logo
     width: 4rem;
@@ -59,7 +63,7 @@ body{
       color: $dark-font;
     }
   }
-}
+} // .header end
 
 .line-after{
   position: relative;
@@ -76,6 +80,19 @@ body{
 
 #error-message{
   @include font-styles($commom-font,2rem,$dark-font);
+}
+
+#go-top{
+  position: fixed;
+  right: 1%;
+  bottom: 1%;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: $main-red;
+  .bi.bi-arrow-up{
+    font-size: 1.5rem;
+    color: $light-font;
+  }
 }
 
 .bug{

@@ -47,7 +47,7 @@ export default function TypesRelations(){
                     data-bs-placement="bottom"
                     className={`damage-relation-type p-0 ${type.colorClass} d-flex align-items-center`}
                   > 
-                    <img className="types-image mx-auto d-block align-middle" src={type.typeImage} alt="" />
+                    <img className="types-image mx-auto d-block align-middle" src={type.typeImage} alt={`${type.typeName}-image`} />
                   </div>
                   <span 
                     data-bs-toggle="tooltip" 

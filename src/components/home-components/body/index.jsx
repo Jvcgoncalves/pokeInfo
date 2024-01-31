@@ -34,9 +34,9 @@ export default function MainContent({renderApiError,types,setTypesToShow,pokemon
   },[pokemonsToShow])
 
   return (
-    <div className="container-xxl d-grid px-5">
+    <div className="container-fluid d-grid px-5">
       <div id="all-pokemons" className="pb-3">
-        <h2 className="text-center mb-4 mt-2" id="headline-text">PokeInfo</h2>
+        <h2 className="text-center mb-4 mt-2" id="headline-text">PokeInfo (gen 1 - gen 3)</h2>
         <div
           className={
             `${ pokemonsToShow.length <= 1 ? "d-flex flex-column text-center" : "d-grid flex-wrap justify-content-start gap-3 me-1"} container pokemons-cards pe-3`
@@ -82,6 +82,7 @@ export default function MainContent({renderApiError,types,setTypesToShow,pokemon
       setTypesToShow={setTypesToShow} 
       types={types}
       />
+      
     </div>
   )
 }

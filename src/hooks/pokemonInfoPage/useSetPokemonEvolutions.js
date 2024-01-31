@@ -21,32 +21,56 @@ export default function useSetPokemonEvolutions(){
 
 function getEvolutionsName(speciesData){
   let currentEvolution = speciesData // each time that currentEvolution.evolves_to return one evolution, i set current evolution to this pokemon, this way i dont have to get the object value like this: currentEvolution.evolves_to[0].evolves_to[0] and get a big selection
+  const all_evolutions = [{name: currentEvolution.species.name,order:"evolution-1"}] // get pokemons name to filter at big pokemons array
 
-  const all_evolutions = [currentEvolution.species.name] // get pokemons name to filter at big pokemons array
-
-    if(currentEvolution.evolves_to.length > 0){ // verify if this pokemon have a evolution, so if currentEvolution.evolves_to.length are bigger than one, means that this pokemon hava a evolution
+    if(currentEvolution.evolves_to.length === 1){ // verify if this pokemon have a evolution, so if currentEvolution.evolves_to.length are bigger than one, means that this pokemon hava a evolution
+      console.log(currentEvolution);
 
       currentEvolution = currentEvolution.evolves_to[0]
-      all_evolutions.push(currentEvolution.species.name)
+      all_evolutions.push({name: currentEvolution.species.name,order:"evolution-2"})
 
-      if(currentEvolution.evolves_to.length > 0){
+      if(currentEvolution.evolves_to.length === 1){
+      console.log(currentEvolution);
+
         currentEvolution = currentEvolution.evolves_to[0]
-        all_evolutions.push(currentEvolution.species.name)
-      }
-    }
+        all_evolutions.push({name: currentEvolution.species.name,order:"evolution-3"})
+      } else {
+        console.log(currentEvolution);
+        currentEvolution.evolves_to.forEach(evolution =>{
+          currentEvolution = evolution
+          all_evolutions.push({name: currentEvolution.species.name,order:"evolution-3"})
+        })
+      } // end of intern if if
+
+    } else {
+      currentEvolution.evolves_to.forEach(evolution =>{
+        console.log(evolution);
+        currentEvolution = evolution
+        all_evolutions.push({name: currentEvolution.species.name,order:"evolution-2"})
+
+        if(currentEvolution.evolves_to.length === 1){
+    
+          currentEvolution = currentEvolution.evolves_to[0]
+          all_evolutions.push({name: currentEvolution.species.name,order:"evolution-3"})
+        } 
+      })
+      
+    } // end of bigger if
   return all_evolutions
 }
 
 function filterEvolutionsData(evolution,AllPokemonsArray){
   if(evolution.length === 0) return "there is no evolution"
-  return evolution.map(currentEvolution => {
-    const pokemonFiltred = AllPokemonsArray.filter(pokemon => pokemon.name === currentEvolution)[0]
-    if(pokemonFiltred === undefined) return
-    return { 
+  const allEvolutions = evolution.map(currentEvolution => {
+    const pokemonFiltred = AllPokemonsArray.filter(pokemon => pokemon.name === currentEvolution.name)[0]
+    if(pokemonFiltred === undefined || pokemonFiltred === null) return
+    else return { 
       pokemon_name: pokemonFiltred.name,
-      pokemon_image: pokemonFiltred.sprites.front_default
+      pokemon_image: pokemonFiltred.sprites.other.dream_world.front_default,
+      order: currentEvolution.order
     }
   })
+  return allEvolutions.filter(element => element !== undefined && element !== null)
 }
 
 async function getSpeciesData(speciesURL){

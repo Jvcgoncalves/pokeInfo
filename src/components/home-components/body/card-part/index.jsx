@@ -52,7 +52,6 @@ export default function CardPokemon({pokemon,allPokemonTypes,pokemonImage,name,t
     key={name} 
     data-type-1={pokemonTypes.current[0].colorClass}
     {...(pokemonTypes.current.length > 1 ? { "data-type-2": pokemonTypes.current[1].colorClass } : {})}
-    
     className="pokemon-divs p-3 rounded d-flex flex-column gap-3"
     >
       <img className="pokemon-image mx-auto d-block" src={pokemonImage} alt={`${name}-image`} />

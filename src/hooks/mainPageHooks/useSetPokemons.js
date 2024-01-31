@@ -4,7 +4,7 @@ let renderApiError = false
 
 async function getPokemons(){
   try {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0").then((res) => {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=386&offset=0").then((res) => {
     return res.json()
   }).catch(e=> console.log(e))
   return response.results
@@ -15,7 +15,7 @@ async function getPokemons(){
   } 
 } 
 
-export default function useSetPoekemons(){
+export default function useSetPokemons(){
   const [pokemons, setPokemons] = useState([])
 
 

@@ -27,10 +27,19 @@ export default function useSetPokemonsToShow(){
 
   const filterPokemonsToShowByTyping = (letters) =>{
     setPokemonsToShow(() => {
-      const newPokemonsToShowState = pokemonsFiltered.filter(pokemon =>{
-        const regularExpressionRule = new RegExp(`^${letters}`, 'i');
-        return regularExpressionRule.test(pokemon.name)
-      })
+      let newPokemonsToShowState;
+      if(letters.match(/\W/g)) return ["No pokemon found"]
+      if(Number.parseInt(letters)){
+          newPokemonsToShowState = pokemonsFiltered.filter(pokemon =>{
+          const regularExpressionRule = new RegExp(`^${letters}`, 'i');
+          return regularExpressionRule.test(pokemon.id)
+        })
+      } else {
+          newPokemonsToShowState = pokemonsFiltered.filter(pokemon =>{
+          const regularExpressionRule = new RegExp(`^${letters}`, 'i');
+          return regularExpressionRule.test(pokemon.name)
+        })
+      }
       
       return newPokemonsToShowState.length === 0 ? ["No pokemon found"] : newPokemonsToShowState
     })

@@ -16,34 +16,31 @@ export default function PokemonCuriosities(){
   const {pokemonDamageRelations,setPokemonTypes} = useSetTypesDamageRelations()
   const {pokemonEvolutions,getEvolutionData} = useSetPokemonEvolutions()
   const [pokemonData,setPokemonData] = useState(null)
-
-  useEffect( () => {
-    try{
-      if(pokemonDamageRelations.length === 0 && pokemonEvolutions.length === 0 ){ // to not cause too many renders
-        setPokemonTypes(state.pokemon,state.types)
-        getEvolutionData(state.pokemon.species.url,state.allPokemons)
-      } else if(pokemonData !== "error" ){ 
-        if( pokemonEvolutions.length === 0 || pokemonDamageRelations.length === 0) return // case any one then have not content the function will return to pokemon data be 
-        setPokemonData(new PokemonInfo(state.pokemon,pokemonDamageRelations ?? [],pokemonEvolutions ?? []))
-      }
-    } catch (e){
+  
+  if(pokemonDamageRelations.length === 0 && pokemonEvolutions.length === 0 ){ // to not cause too many renders
+    try {
+      setPokemonTypes(state.pokemon,state.types)
+      getEvolutionData(state.pokemon.species.url,state.allPokemons)
+    } catch (error) {
       setPokemonData("error")
-      console.log(e);
     }
-    return ( () => "" )
-  },[pokemonEvolutions,pokemonDamageRelations])
-
+  } else if(pokemonData !== "error" && pokemonData === null){ 
+    if( pokemonEvolutions.length === 0 || pokemonDamageRelations.length === 0) return // case any one then have not content the function will return to pokemon data be 
+    setPokemonData(new PokemonInfo(state.pokemon,pokemonDamageRelations ?? [],pokemonEvolutions ?? []))
+  }
   return(
     <PokemonInfoContext.Provider value={pokemonData}>
     <AllTypes.Provider value={state.types}>
       <div id="app">
-        <Header>
+        <Header
+        page={"pokemonInfo"}
+        >
           <PokemonCuriositiesNavbar />
         </Header>
         {
           pokemonData === "error" ? 
           (
-            <Div className={"container-xxl px-5 pt-5 info-page text-center"}>
+            <Div className={"container-fluid px-5 pt-5 info-page text-center"}>
               <ErrorMessage />
             </Div>
           )

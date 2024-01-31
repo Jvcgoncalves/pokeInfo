@@ -1,4 +1,4 @@
-.container-xxl.info-page{
+.container-fluid.info-page{
   .h1{
     @include font-styles($title-font,3rem,$dark-font);
     font-weight: 100
@@ -9,6 +9,7 @@
   .h3{
     @include font-styles($commom-font,1.35rem,$dark-font);
   }
+  
   .container.pokemon-data{
     box-shadow: 0 0 1rem .1rem $dark-font;
     max-width: 97%;
@@ -33,7 +34,7 @@
           height: 10rem;
           animation: 5s infinite linear rotatePokeball;
         }
-      }
+      } // .damage-relations end
 
       .change-pokemon-image{
         border: .1rem solid $main-red;
@@ -45,8 +46,8 @@
           color: $light-font;
           transform: scale(1.1);
         }
-      }
-    }
+      } // .damage-relations end
+    } // .damage-relations end
 
     .pokemon-stats {
       position: relative;
@@ -59,13 +60,13 @@
             @include font-styles($subtitle-font,1.1rem,$dark-font);
           }
           font-weight: 100;
-        }
+        } // .damage-relations end
         .stats-bar{
           height: 1.75rem;
           color: $box-color;
-        }
-      }
-    }
+        } // .damage-relations end
+      } // .damage-relations end
+    } // .damage-relations end
     .damage-relations{
       .pokemon-types-block{
         @include font-styles($commom-font,1.1rem,$dark-font);
@@ -73,7 +74,7 @@
           width: 3rem;
           height: 3rem;
         }
-      }
+      } // .damage-relations end
       .types-table{
         .table-damage-relation-block{
           .damage-relation-type{
@@ -88,12 +89,45 @@
           @include font-styles($subtitle-font,1rem,$dark-font);
   
           .types-image{
-            width: 2rem;
-            height: 2rem;
+            width: 65%;
+            height: 65%;
           }
-        }
+        } // .damage-relations end
+      } // .damage-relations end
+    } // .damage-relations end
+
+    .pokemon-evolutions-block{
+      .evolution-3{
+        margin-left:15% !important;
       }
-    }
-  }
+      .evolution-2,.evolution-3{
+        position: relative;
+        max-width: 100%;
+        margin-left: 5%;
+        &::before{
+          position: relative;
+          content: "";
+          color: $dark-font;
+          width: 3rem;
+          background: url("/images/arrow.svg");
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+          font-size: 5rem;
+          transform: rotate(-90deg) translateX(50%);
+        }
+        
+      }
+      .pokemon-evolutions-images{
+        background-color: $box-color;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 25%;
+        background-position: center;
+        object-fit: contain;
+      }
+
+    } // .pokemon-evolutions-block end
+  } // .container.pokemon-data end
 
 }

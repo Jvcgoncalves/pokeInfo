@@ -1,4 +1,4 @@
-.container-xxl{ // main container with all pokemons
+.container-fluid{ // main container with all pokemons
   grid-template-columns: 1fr 4fr;
   grid-template-areas: 
   "side_bar main_content";
@@ -6,21 +6,21 @@
   #all-pokemons{
     margin-top: 0;
     grid-area: main_content;
+  }
 
-    #headline-text{
-      @include font-styles($title-font,3.3rem,$dark-font);
-      font-weight: 700;
-    }
-    
+  #headline-text{
+    @include font-styles($title-font,3.3rem,$dark-font);
+    font-weight: 700;
   }
 
   .pokemons-cards{
-    width: 100%;
+    width: 90%;
     max-width: 900px;
     grid-template-columns: repeat(3,1fr);
     .pokemon-divs{ // Global config to all pokemon divs
       position: relative;
-      width: 16rem;
+      width: 100%;
+      max-width: 17rem;
       height: 21rem;
       justify-self: flex-end;
       .pokemon-image{
@@ -55,7 +55,7 @@
         }
       }
     }
-  }
+  } // .pokemons-cards end
 
   .loader{
     display: flex;
