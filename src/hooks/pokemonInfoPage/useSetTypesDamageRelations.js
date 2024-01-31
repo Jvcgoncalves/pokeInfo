@@ -18,7 +18,6 @@ export default function useSetTypesDamageRelations(){
       setPokemonDamageRelations(getTypeDamages(pokemonTypeData))
     } catch (e){
       setPokemonDamageRelations(["error"])
-      console.log(e);
     }
   }
 

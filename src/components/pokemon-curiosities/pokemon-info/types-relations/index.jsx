@@ -1,10 +1,7 @@
 import { useContext, useEffect } from "react";
 import AllTypes from "../../../../contexts/AllPokemonTypes";
 import PokemonInfoContext from "../../../../contexts/PokemonInfo";
-// console.log(pokemonData.typeDamageRelation.map(damageRelationArray =>{
-//   console.log(typeDamageRelationFinalText(type.colorClass,damageRelationArray));
-//   return typeDamageRelationFinalText(type.colorClass,damageRelationArray)
-// })); 
+
 export default function TypesRelations(){
   const allTypes = useContext(AllTypes)
   const pokemonData = useContext(PokemonInfoContext)

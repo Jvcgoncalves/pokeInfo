@@ -24,18 +24,15 @@ function getEvolutionsName(speciesData){
   const all_evolutions = [{name: currentEvolution.species.name,order:"evolution-1"}] // get pokemons name to filter at big pokemons array
 
     if(currentEvolution.evolves_to.length === 1){ // verify if this pokemon have a evolution, so if currentEvolution.evolves_to.length are bigger than one, means that this pokemon hava a evolution
-      console.log(currentEvolution);
 
       currentEvolution = currentEvolution.evolves_to[0]
       all_evolutions.push({name: currentEvolution.species.name,order:"evolution-2"})
 
       if(currentEvolution.evolves_to.length === 1){
-      console.log(currentEvolution);
 
         currentEvolution = currentEvolution.evolves_to[0]
         all_evolutions.push({name: currentEvolution.species.name,order:"evolution-3"})
       } else {
-        console.log(currentEvolution);
         currentEvolution.evolves_to.forEach(evolution =>{
           currentEvolution = evolution
           all_evolutions.push({name: currentEvolution.species.name,order:"evolution-3"})
@@ -44,7 +41,6 @@ function getEvolutionsName(speciesData){
 
     } else {
       currentEvolution.evolves_to.forEach(evolution =>{
-        console.log(evolution);
         currentEvolution = evolution
         all_evolutions.push({name: currentEvolution.species.name,order:"evolution-2"})
 
