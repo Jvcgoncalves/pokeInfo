@@ -9,6 +9,12 @@ My first react project, currently being developed
 - SASS
 - Bootstrap
 - Vite
+- Npm
+- Git
 
-Website hosting
+## Services Used
+
+- Github
 - Netlify
+
+## How to use
