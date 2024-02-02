@@ -65,7 +65,6 @@ export default function CardPokemon({pokemon,allPokemonTypes,pokemonImage,name,t
               key={type.typeImage}
               typeName={type.typeName}
               imgSrc={type.typeImage}
-              pokeName={name}
               />
               )}
             )

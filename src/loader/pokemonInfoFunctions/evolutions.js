@@ -1,22 +1,17 @@
-import { useState } from "react";
+export default async function getEvolutionData(speciesURL){
+  
+  try{
+    const evolutionChain = await fetch(speciesURL).then(res => {
+      return res.json()
+    })
+    const evolutionName = getEvolutionsName(evolutionChain.chain)
 
-export default function useSetPokemonEvolutions(){
-  const [pokemonEvolutions,setPokemonEvolutions] = useState([])
-
-  async function getEvolutionData(speciesURL,allPokemons){
-    let speciesData;
-    
-    try{
-      speciesData = await getSpeciesData(speciesURL).catch(() => setPokemonEvolutions(["error"]))
-      speciesData = await getEvolutionChainData(speciesData.evolution_chain.url).catch(() => setPokemonEvolutions(["error"]))
-      setPokemonEvolutions(filterEvolutionsData(getEvolutionsName(speciesData.chain),allPokemons))
-    } catch (e){
-      setPokemonEvolutions(["error"])
-      console.log(e.message);
-    }
+    const pokemonsData = await filterEvolutionsData(evolutionName) // get image, name and order in evolution line
+    return pokemonsData
+  } catch (e){
+    console.log(e);
+    return "error"
   }
-
-  return{pokemonEvolutions,getEvolutionData}
 }
 
 function getEvolutionsName(speciesData){
@@ -55,24 +50,18 @@ function getEvolutionsName(speciesData){
   return all_evolutions
 }
 
-function filterEvolutionsData(evolution,AllPokemonsArray){
-  if(evolution.length === 0) return "there is no evolution"
-  const allEvolutions = evolution.map(currentEvolution => {
-    const pokemonFiltred = AllPokemonsArray.filter(pokemon => pokemon.name === currentEvolution.name)[0]
-    if(pokemonFiltred === undefined || pokemonFiltred === null) return
-    else return { 
-      pokemon_name: pokemonFiltred.name,
-      pokemon_image: pokemonFiltred.sprites.other.dream_world.front_default,
-      order: currentEvolution.order
-    }
-  })
-  return allEvolutions.filter(element => element !== undefined && element !== null)
-}
-
-async function getSpeciesData(speciesURL){
-  return await fetch(speciesURL).then( res =>res.json()).catch( () => null)
-}
-
-async function getEvolutionChainData(url){
-  return await fetch(url).then(res => res.json())
+async function filterEvolutionsData(evolutionArray){
+  return   await Promise.all(evolutionArray.map(async pokemon => await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
+  .then(async res =>
+      {
+        const currentPokemonData = await res.json()
+        
+        return {
+          pokemonName: currentPokemonData.name,
+          pokemonImage: currentPokemonData.sprites.other.dream_world.front_default,
+          order:pokemon.order
+        }
+      })
+    )
+  )
 }

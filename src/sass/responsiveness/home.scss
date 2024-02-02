@@ -61,6 +61,7 @@
       width: 22% ;
       top: 7.5rem;
       height: calc(100vh - 7.5rem);
+      height: calc(100dvh - 7.5rem);
       .navbar-nav{
           .nav-item{
             border-bottom: .1rem solid $dark-font;
@@ -155,6 +156,7 @@
     .side-nav-bar{
       top: 7rem;
       height: calc(100vh - 7rem);
+      height: calc(100dvh - 7rem);
       width: 20%;
       .navbar-nav{
         .nav-item{
@@ -308,6 +310,7 @@
           position: fixed;
           width: 100%;
           height: 100vh;
+          height: 100dvh;
           background-color: #222222ab;
           z-index: -1;
 
@@ -384,6 +387,7 @@
     .side-nav-bar{
       top: 8rem;
       height: calc(100vh - 8rem); 
+      height: calc(100dvh - 8rem); 
       .button-open-filter{
         top: 8.2rem;
       }
@@ -485,6 +489,7 @@
     .side-nav-bar{
       top: 8rem;
       height: calc(100vh - 8rem); 
+      height: calc(100dvh - 8rem); 
       .button-open-filter{
         top: 8.2rem;
       }

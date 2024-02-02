@@ -1,16 +1,12 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import AllPokemonArray from "../../../../contexts/allPokemonsArray";
 
-export default function ButtonPart({pokemon,pokemonName,types}){
-
-  const allPokemons = useContext(AllPokemonArray)
-
+export default function ButtonPart({pokemon,types}){
+  // speciesURL,allPokemons
   return (
     <div className="d-grid h-100 align-items-center">
       <Link 
-      state={{pokemon,types,allPokemons}} 
-      to={`pokemon-info/${pokemonName}`}
+      state={{pokemon,types}} 
+      to={`pokemon-info/${pokemon.id}`}
       className="btn btn-outline-primary see-more-button"
       >
         Ver mais

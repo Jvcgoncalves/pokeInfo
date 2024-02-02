@@ -15,13 +15,13 @@ export default function EvolutionsPart(){
         return (
           <Div 
             className={`d-flex flex-wrap gap-3 mt-4 ${evolutionLine.order}`}
-            key={evolutionLine.pokemon_name}
+            key={evolutionLine.pokemonName}
           >
             <PokemonEvolutionCard 
-              image={evolutionLine.pokemon_image}
-              name={evolutionLine.pokemon_name}
+              image={evolutionLine.pokemonImage}
+              name={evolutionLine.pokemonName}
               types={pokemonData.types}
-              key={evolutionLine.pokemon_name}
+              key={evolutionLine.pokemonName}
             />
           </Div>
         )
@@ -37,10 +37,10 @@ export default function EvolutionsPart(){
                 return (
                   
                     <PokemonEvolutionCard 
-                      image={pokemon.pokemon_image}
-                      name={pokemon.pokemon_name}
+                      image={pokemon.pokemonImage}
+                      name={pokemon.pokemonName}
                       types={pokemonData.types}
-                      key={pokemon.pokemon_name}
+                      key={pokemon.pokemonName}
                      
                     />
                   

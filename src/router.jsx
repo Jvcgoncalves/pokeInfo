@@ -4,6 +4,7 @@ import PokemonCuriosities from "./pages/PokemonCuriosities.jsx"
 import ErrorMessage from "./components/commom/ErrorMessage.jsx";
 import PokemonCuriositiesNavbar from "./components/pokemon-curiosities/pokemon-curiosities-navbar/index.jsx";
 import Header from "./components/home-components/header/index.jsx";
+import loadPokemon from "./loader/pokemonInfo.js";
 
 const router = createBrowserRouter([
   {
@@ -11,12 +12,9 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "pokemon-info/:pokemonName",
+    path: "pokemon-info/:pokemonId",
     element: <PokemonCuriosities />,
-    loader: ({params}) => {
-      if(params !== null && params !== undefined)
-      return "ok"
-    }
+    loader: loadPokemon
     ,
     errorElement: 
     <div id="app">
