@@ -8,6 +8,10 @@ import loadPokemon from "./loader/pokemonInfo.js";
 
 const router = createBrowserRouter([
   {
+    path: "*",
+    element: <Home />,
+  },
+  {
     path: "/",
     element: <Home />,
   },
