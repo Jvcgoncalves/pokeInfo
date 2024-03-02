@@ -25,18 +25,19 @@ export default function useSetPokemonsToShow(){
     }
   }
 
-  const filterPokemonsToShowByTyping = (letters) =>{
+  const filterPokemonsToShowByTyping = async (letters) =>{
     setPokemonsToShow(() => {
       let newPokemonsToShowState;
-      if(letters.match(/\W/g)) return ["No pokemon found"]
-      if(Number.parseInt(letters)){
+      let pokemon_input = letters.replace(/\s/g, "")
+      if(pokemon_input.match(/\W/g)) return ["No pokemon found"]
+      if(Number.parseInt(pokemon_input)){
           newPokemonsToShowState = pokemonsFiltered.filter(pokemon =>{
-          const regularExpressionRule = new RegExp(`^${letters}`, 'i');
+          const regularExpressionRule = new RegExp(`^${pokemon_input}`, 'i');
           return regularExpressionRule.test(pokemon.id)
         })
       } else {
           newPokemonsToShowState = pokemonsFiltered.filter(pokemon =>{
-          const regularExpressionRule = new RegExp(`^${letters}`, 'i');
+          const regularExpressionRule = new RegExp(`^${pokemon_input}`, 'i');
           return regularExpressionRule.test(pokemon.name)
         })
       }

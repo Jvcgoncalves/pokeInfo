@@ -358,6 +358,12 @@
           visibility: visible;
           width: 16rem;
         }
+
+        .search-results{
+          top: 4.5rem;
+          right: .5rem;
+          width: 15rem;
+        }
       } // .search-pokemons end
 
       .logo{
@@ -422,10 +428,20 @@
         .search-pokemons-input{
           height: 1.75rem;
           margin-top: .25rem;
+          font-size: .9rem;
         }
 
         #pokemons-input.active{
           width: 13.5rem;
+        }
+
+        .search-results{
+          top: 4.5rem;
+          right: .5rem;
+          width: 12.5rem;
+          .pokemons-search-result{
+            font-size: .9rem;
+          }
         }
       } // .search-pokemons end
 
@@ -481,6 +497,12 @@
         #pokemons-input.active{
           width: 10rem;
         }
+
+        .search-results{
+          top: 4.5rem;
+          right: .5rem;
+          width: 9rem;
+        }
       } // .search-pokemons end
     } // .navbar end
   } // .header end
@@ -525,6 +547,11 @@
 
         #pokemons-input.active{
           width: 11rem;
+        }
+        .search-results{
+          top: 4.5rem;
+          right: .5rem;
+          width: 10rem;
         }
       } // .search-pokemons end
 

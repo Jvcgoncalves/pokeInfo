@@ -70,6 +70,7 @@ export default  function Home() {
         <Header>
           <HomeNavbar
             filterPokemonsToShowByTyping={filterPokemonsToShowByTyping}
+            pokemonsToShow={pokemonsToShow}
           />
         </Header>
         <MainContent 

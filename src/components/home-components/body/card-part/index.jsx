@@ -12,6 +12,7 @@ CardPokemon.propTypes ={
 }
 
 export function capitalize(str) {
+  if (!str) return ""
   str === "nidoran-m" || str === "nidoran-f" ? str = str.slice(0,-2) : null 
   return str.charAt(0).toUpperCase() + str.slice(1);
 }

@@ -31,7 +31,7 @@ body{
     height: 100%;
     width: 100%;
     .search-pokemons{ // search input div config
-
+      position: relative;
       .search-button{ // Search button
         font-size: 1.2rem; // using bootstrap icons, and because of it i manipulate the magnifying glass icon like a text 
       }
@@ -42,6 +42,45 @@ body{
         border-radius: 1.25rem;
         background-color: $bg-color;
         border: none;
+        @include font-styles($subtitle-font,1rem,$dark-font);
+      }
+
+      .search-results{
+        position: absolute;
+        top: 99%;
+        right: 4%;
+        height: min-content;
+        background-color: $bg-color;
+        width: 92.5%;
+        border-radius: 1%;
+        
+        .pokemons-search-result{
+          list-style: none;
+          height: 100%;
+          max-height: 12rem;
+          overflow-y: auto;
+          cursor: pointer;
+          &::-webkit-scrollbar {
+            width: .75rem;               /* width of the entire scrollbar */
+          }
+          
+          &::-webkit-scrollbar-track {
+            background: $dark;        /* color of the tracking area */
+          }
+          
+          &::-webkit-scrollbar-thumb {
+            background-color: $second-red;    /* color of the scroll thumb */
+            border-radius: .25rem;       /* roundness of the scroll thumb */
+          }
+          @include font-styles($subtitle-font,1rem,$dark-font);
+          & > :not(:last-child){
+            border-bottom: .15rem solid $dark;
+          }
+
+          &:empty{
+            height: 0;
+          }
+        }
       }
     } // .search-pokemons end
   } // .navbar end
